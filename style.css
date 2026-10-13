@@ -112,3 +112,20 @@ h1, h2, h3, h4, h5, h6 {
 .resume li {
   margin-left: 1.2em;
 }
+
+.resume .project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  gap: 1em;
+}
+
+.resume .project-grid article {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 2;
+  margin-block: 0;
+}
+
+.resume .project-grid p {
+  margin: 0;
+}
