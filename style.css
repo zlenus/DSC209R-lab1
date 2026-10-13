@@ -71,4 +71,44 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
   text-wrap: balance;
 }
+
 .resume .education         { --section-color: oklch(55% 50% 250); }
+.resume .experience        { --section-color: oklch(55% 50% 150); }
+.resume .personal-projects { --section-color: oklch(60% 50% 60); } 
+.resume .skills            { --section-color: oklch(55% 50% 310); }
+
+.resume section {
+  margin-block: 2.5em;
+}
+.resume h2 {
+  color: var(--section-color);
+  border-bottom: 2px solid var(--section-color);
+  padding-bottom: 0.2em;
+}
+.resume article, .resume .skills ul {
+  border-left: 0.3em solid var(--section-color);
+  padding-left: 1em;
+}
+.resume article {
+  margin-block: 1.25em;
+}
+ 
+.resume article header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0 1em;
+}
+ 
+.resume h3, .resume article header p {
+  margin: 0;
+}
+ 
+.resume time {
+  color: var(--section-color);
+}
+ 
+.resume li {
+  margin-left: 1.2em;
+}
