@@ -26,3 +26,12 @@ nav a.current {
   border-bottom: 0.4em solid oklch(80% 3% 200);
   padding-bottom: 0.1em;
 }
+html {
+  --color-accent: oklch(36.104% 0.12813 26.498);
+  accent-color: var(--color-accent);
+}
+nav a:hover {
+  border-bottom: 0.4em solid var(--color-accent);
+  padding-bottom: 0.1em;
+  background-color: oklch(from var(--color-accent) 95% 5% h);
+}
