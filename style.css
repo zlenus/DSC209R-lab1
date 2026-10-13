@@ -5,3 +5,12 @@ body
   margin-inline: auto;
   padding: 1rem;
 }
+img
+{
+  max-width: 100%;
+}
+nav
+{
+  display:flex;
+
+}
