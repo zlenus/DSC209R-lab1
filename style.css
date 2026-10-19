@@ -10,6 +10,7 @@ img {
 }
 
 nav {
+  border-color: oklch(50% 10% 200 / 40%);
   display:flex;
   margin-bottom: 1em;
   border-bottom: 1px solid oklch(80% 3% 200);
@@ -23,17 +24,18 @@ nav a {
   padding: 0.5em;
 }
 nav a.current {
-  border-bottom: 0.4em solid oklch(80% 3% 200);
+  border-bottom: 0.4em solid var(--border-color);
   padding-bottom: 0.1em;
 }
 html {
+  color-scheme: light dark;
   --color-accent: oklch(37.67% 0.1546 29.23);
   accent-color: var(--color-accent);
 }
 nav a:hover {
   border-bottom: 0.4em solid var(--color-accent);
   padding-bottom: 0.1em;
-  background-color: oklch(from var(--color-accent) 95% 5% h);
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
 }
 input, textarea, button {
   font: inherit;
