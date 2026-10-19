@@ -37,7 +37,7 @@ nav a:hover {
   padding-bottom: 0.1em;
   background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
 }
-input, textarea, button {
+input, textarea, button, select {
   font: inherit;
 }
 form {
@@ -52,6 +52,12 @@ form label {
 }
 form button {
   grid-column: 1 / -1;
+}
+.color-scheme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 80%;
 }
 .projects {
   display: grid;
