@@ -1,9 +1,9 @@
 [
   {
-    "title": "Lorem ipsum dolor sit beep.",
+    "title": "Mind Game",
+    "year": "2022",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut nam et aperiam sed necessitatibus fugit laboriosam minus recusandae eveniet sunt. Corporis reprehenderit accusamus veniam. Rem, incidunt. Iste aut dicta saepe."
-  },
+    "description": "Using an EEG, developed a game that uses a user's brain activity to increase or decrease the game's difficulty."},
   {
     "title": "Quasi ipsam officia nemo!",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
