@@ -157,3 +157,10 @@ h1, h2, h3, h4, h5, h6 {
   font-family: Baskerville, 'Libre Baskerville', serif;
   font-variant-numeric: oldstyle-nums;
 }
+
+#projects-pie-plot {
+  flex: 0 1 15em;
+  min-width: 8em;
+  max-width: 20em;
+  overflow: visible;
+}
