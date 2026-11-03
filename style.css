@@ -164,3 +164,46 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 20em;
   overflow: visible;
 }
+.container {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  margin-block: 2em;
+}
+
+.legend {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  gap: 1em;
+  list-style: none;
+  margin: 0;
+  padding: 1em;
+  border: 1px solid oklch(80% 3% 200);
+  border-radius: 0.3em;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;      
+  cursor: pointer;
+}
+
+.swatch {
+  display: inline-block;
+  width: 1em;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: var(--color);
+}
+
+@media (max-width: 30em) {
+  .container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  #projects-pie-plot {
+    align-self: center;
+  }
+}
