@@ -13,3 +13,14 @@ if (projectsTitle) {
 const arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
 const sliceGenerator = d3.pie().value((d) => d.value).sort(null);
 const colors = d3.scaleOrdinal(d3.schemeTableau10);
+
+renderProjects(projects, projectsContainer, 'h2');
+
+let arc = arcGenerator({
+  startAngle: 0,
+  endAngle: 2 * Math.PI,});
+
+d3.select('#projects-pie-plot')
+  .append('path')
+  .attr('d', arc)
+  .attr('fill', 'red');
