@@ -163,6 +163,26 @@ h1, h2, h3, h4, h5, h6 {
   min-width: 8em;
   max-width: 20em;
   overflow: visible;
+
+  path {
+    transition: 300ms;
+    cursor: pointer;
+    outline: none;
+  }
+
+  &:has(path:hover, path:focus-visible) {
+    path:not(:hover, :focus-visible) {
+      opacity: 0.5;
+    }
+  }
+}
+
+.selected {
+  --color: oklch(60% 45% 0) !important;
+
+  &:is(path) {
+    fill: var(--color);
+  }
 }
 .container {
   display: flex;

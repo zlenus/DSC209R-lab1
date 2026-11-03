@@ -11,10 +11,7 @@ if (projectsTitle) {
 }
 
 const arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
-const sliceGenerator = d3.pie().sort(null);
-const colors = d3.scaleOrdinal(d3.schemeTableau10);
-
-renderProjects(projects, projectsContainer, 'h2');
+const sliceGenerator = d3.pie().value((d) => d.value).sort(null);const colors = d3.scaleOrdinal(d3.schemeTableau10);
 
 let query = '';
 let selectedYear = null;
@@ -26,20 +23,6 @@ function filterByQuery(list) {
     return values.includes(q);
   });
 }
-
-let data = [1, 2, 3, 4, 5, 5];
-
-let arcData = sliceGenerator(data);
-let arcs = arcData.map((d) => arcGenerator(d));
-
-let svg = d3.select('#projects-pie-plot');
-
-arcs.forEach((arc, idx) => {
-  svg
-    .append('path')
-    .attr('d', arc)
-    .attr('fill', colors(idx));
-});
 
 function renderPieChart(projectsGiven) {
   const rolledData = d3.rollups(projectsGiven, (v) => v.length, (d) => d.year);
@@ -84,3 +67,31 @@ function renderPieChart(projectsGiven) {
       .on('click', () => toggleYear(d.label));
   });
 }
+
+function toggleYear(year) {
+  selectedYear = selectedYear === year ? null : year;
+  update();
+}
+
+function filterByYear(list) {
+  if (selectedYear === null) return list;
+  return list.filter((project) => project.year === selectedYear);
+}
+
+function update() {
+  const queryFiltered = filterByQuery(projects);
+
+  if (selectedYear !== null && !queryFiltered.some((p) => p.year === selectedYear)) {
+    selectedYear = null;
+  }
+
+  renderProjects(filterByYear(queryFiltered), projectsContainer, 'h2');
+  renderPieChart(queryFiltered);
+}
+
+searchInput.addEventListener('input', (event) => {
+  query = event.target.value;
+  update();
+});
+
+update();
