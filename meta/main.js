@@ -103,6 +103,11 @@ function updateTooltipVisibility(isVisible) {
   tooltip.hidden = !isVisible;
 }
 
+function createBrushSelector(svg) {
+  svg.call(d3.brush());
+  svg.selectAll('.dots, .overlay ~ *').raise();
+}
+
 function renderScatterPlot(data, commits) {
   const width = 1000;
   const height = 600;
@@ -168,6 +173,8 @@ function renderScatterPlot(data, commits) {
   svg.append('g').attr('transform', `translate(0, ${usableArea.bottom})`).call(xAxis);
 
   svg.append('g').attr('transform', `translate(${usableArea.left}, 0)`).call(yAxis);
+  
+  createBrushSelector(svg);
 
 }
 
