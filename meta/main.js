@@ -113,6 +113,10 @@ function renderScatterPlot(data, commits) {
   
   xScale.range([usableArea.left, usableArea.right]);
   yScale.range([usableArea.bottom, usableArea.top]);
+  
+  const gridlines = svg.append('g').attr('class', 'gridlines').attr('transform', `translate(${usableArea.left}, 0)`);
+
+  gridlines.call(d3.axisLeft(yScale).tickFormat('').tickSize(-usableArea.width),);
 
   dots.selectAll('circle').data(commits).join('circle').attr('cx', (d) => xScale(d.datetime)).attr('cy', (d) => yScale(d.hourFrac)).attr('r', 5).attr('fill', 'steelblue');
   
