@@ -94,18 +94,10 @@ function renderScatterPlot(data, commits) {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom,
   };
-
-  const svg = d3
-    .select('#chart')
-    .append('svg')
-    .attr('viewBox', `0 0 ${width} ${height}`)
-    .style('overflow', 'visible');
-
-  const xScale = d3
-    .scaleTime()
-    .domain(d3.extent(commits, (d) => d.datetime))
-    .range([0, width])
-    .nice();
+  
+  const svg = d3.select('#chart').append('svg').attr('viewBox', `0 0 ${width} ${height}`).style('overflow', 'visible');
+  
+  const colorScale = d3.scaleLinear().domain([0, 6, 12, 18, 24]).range(['#1e3a8a', '#7c9cd9', '#f59e0b', '#fb923c', '#1e3a8a']).interpolate(d3.interpolateHcl);
 
   const yScale = d3.scaleLinear().domain([0, 24]).range([height, 0]);
 
@@ -125,15 +117,9 @@ function renderScatterPlot(data, commits) {
     .axisLeft(yScale)
     .tickFormat((d) => String(d % 24).padStart(2, '0') + ':00');
 
-  svg
-    .append('g')
-    .attr('transform', `translate(0, ${usableArea.bottom})`)
-    .call(xAxis);
+  svg.append('g').attr('transform', `translate(0, ${usableArea.bottom})`).call(xAxis);
 
-  svg
-    .append('g')
-    .attr('transform', `translate(${usableArea.left}, 0)`)
-    .call(yAxis);
+  svg.append('g').attr('transform', `translate(${usableArea.left}, 0)`).call(yAxis);
 
 }
 
