@@ -261,7 +261,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .gridlines .tick line {
   stroke: currentColor;
-  stroke-opacity: 0.5;
+  stroke-opacity: 0.4;
 }
 
 .gridlines .domain {
