@@ -234,3 +234,27 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0.5em;
   margin-block-end: 1.5em;
 }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8em, 1fr));
+  grid-auto-flow: column;
+  grid-template-rows: auto auto;
+  gap: 0.25em 1em;
+  border: 1px solid color-mix(in oklch, currentColor 20%, transparent);
+  border-radius: 0.5em;
+  padding: 1em;
+}
+
+.stats dt {
+  grid-row: 1;
+  font-size: 0.75em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.stats dd {
+  grid-row: 2;
+  margin: 0;
+  font-size: 2em;
+}
