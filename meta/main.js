@@ -40,10 +40,11 @@ function processCommits(data) {
         writable: false,
         configurable: false,
       });
-
+      
       return ret;
-    });
-}
+    })
+    .sort((a, b) => a.datetime - b.datetime);
+  }
 
 function renderCommitInfo(data, commits) {
     // Create the dl element
@@ -87,7 +88,7 @@ function renderCommitInfo(data, commits) {
 function renderTooltipContent(commit) {
     const link = document.getElementById('commit-link');
     const date = document.getElementById('commit-date');
-    const time = document.getElementById('commit-time');
+    const time = document.getElementById('commit-tooltip-time');
     const author = document.getElementById('commit-author');
     const lines = document.getElementById('commit-lines');
 
@@ -252,5 +253,27 @@ function updateTooltipPosition(event) {
 
 let data = await loadData();
 let commits = processCommits(data);
+
+let commitProgress = 100;
+const timeScale = d3
+  .scaleTime()
+  .domain([d3.min(commits, (d) => d.datetime), d3.max(commits, (d) => d.datetime)])
+  .range([0, 100]);
+let commitMaxTime = timeScale.invert(commitProgress);
+
+const slider = document.getElementById('commit-progress');
+const timeEl = document.getElementById('commit-time');
+
+function onTimeSliderChange() {
+  commitProgress = Number(slider.value);
+  commitMaxTime = timeScale.invert(commitProgress);
+  timeEl.textContent = commitMaxTime.toLocaleString('en', {
+    dateStyle: 'long',
+    timeStyle: 'short',
+  });
+}
+
 renderCommitInfo(data, commits);
 renderScatterPlot(data, commits);
+slider.addEventListener('input', onTimeSliderChange);
+onTimeSliderChange(); // set the time on page load
