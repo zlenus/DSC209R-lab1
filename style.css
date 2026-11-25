@@ -418,8 +418,16 @@ circle.selected {
 
 #scatter-plot {
   position: sticky;
-  top: 0;
+  top: 5em;
   left: 0;
   bottom: auto;
   height: 50vh;
+}
+
+#time-filter {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: canvas;
+  padding-block: 0.5em;
 }
